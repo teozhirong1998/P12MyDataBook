@@ -2,6 +2,7 @@ package com.example.a16022635.p12_mydatabook;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -42,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
         al.add(new Title("Anniversary"));
         al.add(new Title("About Us"));
 
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //action
+               drawerLayout.openDrawer(drawerList);
+            }
+        });
+
         ab = getSupportActionBar();
         aa = new DrawerArrayAdapter(MainActivity.this, R.layout.row, al);
 
@@ -62,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (position == 3) {
                     Intent intent = new Intent(MainActivity.this, AboutActivity.class);
                     startActivity(intent);
-                    finish();
+                    return;
                 }
 
                 FragmentManager fm = getSupportFragmentManager();
